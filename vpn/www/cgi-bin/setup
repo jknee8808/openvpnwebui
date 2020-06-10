@@ -1,0 +1,34 @@
+#!/bin/ash
+echo "Content-type: text/html"
+echo
+echo
+
+
+procss=`opkg list | grep stunnel`
+if [ -n "$procss" ]; then
+
+echo "stunnel already installed"
+
+else
+
+
+ 
+echo "
+opkg update
+opkg install stunnel
+" > /tmp/setup.sh
+
+chmod 777 /tmp/setup.sh
+
+sh /tmp/setup.sh
+
+echo "installation success"
+
+
+fi
+
+
+
+
+
+

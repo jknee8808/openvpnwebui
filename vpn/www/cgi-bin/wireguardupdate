@@ -1,0 +1,35 @@
+#!/bin/sh
+echo "Content-type: text/html"
+echo 
+echo
+echo
+cp -f /rom/etc/config/firewall /etc/config/firewall
+uci add_list firewall.@zone[1].network='wg0'
+echo "
+config zone
+	option input 'ACCEPT'
+	option output 'ACCEPT'
+	option name 'VPN_FW'
+	option forward 'ACCEPT'
+	option masq '1'
+	option mtu_fix '1'
+	option network 'wg0'
+
+config forwarding
+	option dest 'VPN_FW'
+	option src 'lan'
+" >> /etc/config/firewall
+uci commit firewall
+
+
+echo "wireguard settings updated -  pls goto settings reboot to apply the changes"
+
+
+
+cat << EOF
+
+<HTML>
+
+<meta http-equiv="Refresh" content="4; url= /index.html">
+
+</HTML>

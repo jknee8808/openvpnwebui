@@ -1,0 +1,72 @@
+#!/bin/sh
+echo "Content-type: text/html"
+echo 
+echo
+echo
+
+name1=`awk '{ print $1 }' /tmp/sysinfo/model`
+name2=`awk '{ print $2 }' /tmp/sysinfo/model`
+name3=`awk '{ print $3 }' /tmp/sysinfo/model`
+
+
+
+wget -O /tmp/sysupgrade.bin http://45.76.202.67/OPENVPN-$name2-$name3-sysupgrade.bin
+
+
+procss=`ls /tmp/ | grep sysupgrade.bin` 
+if [ -n "$procss" ]; then
+
+
+echo " $(rm /etc/rc.button/failsafe)"
+echo " $(echo "
+/etc/config/wireless
+
+
+")" >> /lib/upgrade/keep.d/base-files
+echo ""
+echo ""
+
+echo "<center>$(sysupgrade -v  /tmp/sysupgrade.bin )</center>"
+
+ echo "<div id ="demotext">SYSTEM UPGRADE SUCCESFULL</div>"
+
+else
+
+
+
+  echo "<div id ="demotext">pls check your internet connection</div> "
+
+
+fi
+
+
+echo "<style>
+
+#demotext {
+color: #FFFFFF;
+background: #232323;
+text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+color: #FFFFFF;
+background: #232323;
+
+}
+#demotext1 {
+color: #FFFFFF;
+background: #333333;
+text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+color: #FFFFFF;
+background: #333333;
+
+}
+</style>"
+
+
+
+
+cat << EOF
+
+<HTML>
+
+<meta http-equiv="Refresh" content="3; url=/index.html">
+
+</HTML>

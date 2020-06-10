@@ -1,0 +1,4 @@
+#!/bin/sh
+echo Content-type: text/plain
+echo
+cat /etc/openvpn/account.txt | busybox sed -n '1p'

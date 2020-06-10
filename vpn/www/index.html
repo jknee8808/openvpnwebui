@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>openvpn router</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+   <script src='/js/jquery.min.js'></script> 
+   <script src='/js/jecscript.js'></script> 
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+
+
+    
+
+
+<script>
+function userpassword() {
+  var x = document.getElementById("userpass");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+$(function(){ //ready function
+    $('#myHref').click(function(){ //click event
+         return confirm('Are you sure you want to update?');
+    });
+})
+
+$(function(){ //ready function
+    $('#myHref10').click(function(){ //click event
+         return confirm('Are you sure you want to update?');
+    });
+})
+
+
+$(function(){ //ready function
+    $('#myHref6').click(function(){ //click event
+         return confirm('Are you sure you want to continue?');
+    });
+})
+
+$(function(){ //ready function
+    $('#myHref7').click(function(){ //click event
+         return confirm('Are you sure you want to continue?');
+    });
+})
+
+
+
+
+$("#myHref1").on('click', function() {
+  return confirm(' are you sure!!! want ot have an updgrade?');
+  
+});
+
+$("#myHref2").on('click', function() {
+  return confirm(' upload local file here for offline update');
+  
+});
+
+$("#myHref3").on('click', function() {
+  return confirm(' be sure your device has bigger space?');
+  
+});
+
+$("#myHref4").on('click', function() {
+  return confirm(' deleting files and reboot?');
+  
+});
+
+$("#myHref5").on('click', function() {
+  return confirm('protect device?');
+  
+});
+
+function autostart() {
+                $.get('/cgi-bin/autostart.cgi', function(t) {
+                   "" != t && alert(t)
+                });
+			}
+	
+            function autostop() {
+                $.get('/cgi-bin/autostop.cgi', function(t) {
+                    "" != t && alert(t)
+                });
+            }
+
+
+
+</script>
+
+
+<style>
+body {
+ background-repeat: repeat;
+background-size: cover;
+background-color: rgb(25, 11, 2);
+  
+
+
+
+}
+
+
+</style>
+
+<style>
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+</style>
+<script>
+
+function wifipassword() {
+  var x = document.getElementById("pass");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+
+            setInterval(function() {
+                $('#logs').load('/cgi-bin/ovpnlogs.cgi');
+            }, 1000);
+setInterval(function() {
+                $('#ssllogs').load('/cgi-bin/ssllogs.cgi');
+            }, 1000);
+  setInterval(function() {
+                $('#infos').load('/cgi-bin/head');
+            }, 1000);
+            function connect() {
+                $.get('/cgi-bin/connect.cgi', function(data) {
+                    alert(data);
+                });
+            }
+			
+	
+	function reconnect() {
+                $.get('/cgi-bin/ovpnrestart.cgi', function(data) {
+                    alert(data);
+                });
+	
+
+ function update() {
+                $.get('/cgi-bin/update', function(data) {
+                    alert(data);
+                });
+            }
+
+            function addstartup() {
+                $.get('/cgi-bin/addstartup.cgi', function(data) {
+                    alert(data);
+                });
+            }
+
+  function stunnel() {
+                $.get('/cgi-bin/stunnel', function(data) {
+                    alert(data);
+                });
+            }
+
+
+            function removestartup() {
+                $.get('/cgi-bin/removestartup.cgi', function(data) {
+                    alert(data);
+                });
+            }
+
+ function sslstop() {
+                $.get('/cgi-bin/sslstop.cgi', function(data) {
+                    alert(data);
+
+                });
+            }
+
+ function sslstart() {
+                $.get('/cgi-bin/ssltart.cgi', function(data) {
+                    alert(data);
+
+                });
+            }
+            window.setInterval(function() {
+                var elem = document.getElementById('logs');
+                elem.scrollTop = elem.scrollHeight;
+            }, 100);
+		 window.setInterval(function() {
+                var elem = document.getElementById('ssllogs');
+                elem.scrollTop = elem.scrollHeight;
+            }, 100);
+
+
+
+
+	$(document).ready(function () {
+	var t = $("#wifiname").val();
+	$.ajax({
+		type: "GET",
+		url: "/cgi-bin/wifiname.cgi",
+		success: function (t) {
+			$("#name").val(t)
+		}
+	})
+});
+$(document).ready(function () {
+	var t = $("#wifipass").val();
+	$.ajax({
+		type: "GET",
+		url: "/cgi-bin/wifipass.cgi",
+		success: function (t) {
+			$("#pass").val(t)
+		}
+	})
+});
+
+
+        </script>
+
+<center>
+
+ <img src="logo.png" alt="Avatar" style="width:200px"">
+<style>
+
+.boxer {
+   display: table;
+   border-collapse: collapse;
+}
+ 
+.boxer .box-row {
+   display: table-row;
+}
+ 
+.boxer .box {
+   display: table-cell;
+   text-align: left;
+   vertical-align: top;
+   border: 0px solid black;
+}
+
+
+
+
+
+
+}
+
+
+</style>
+
+</div>
+
+      <script  src="js/index.js"></script>
+	<div style="background-color:; background-size: cover; background-repeat: no-repeat; height: 420px; width: 530px; border: 1px solid black;">
+<b><div class="box">  <div id ="demotext4"><text id="infos"></b>
+
+</text>
+
+<br>
+<div class="tab">
+<button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen"><font color="white">OPENVPN&nbsp;&nbsp;&nbsp;</font></button>
+ <button class="tablinks" onclick="openCity(event, 'Paris')"><font color="white">ACCOUNT&nbsp;&nbsp;&nbsp;</font></button>
+   <button class="tablinks" onclick="openCity(event, 'Tokyo1')"><font color="white">SETTINGS&nbsp;&nbsp;&nbsp;</font></button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo2')"><font color="white">WIFI&nbsp;&nbsp;&nbsp;</font></button>
+<button class="tablinks" onclick="openCity(event, 'Tokyo3')"><font color="white">MISC&nbsp;&nbsp;&nbsp;</font></button>
+</div>
+
+<div id="London" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+ <div class="container-name">
+<div class="">
+<form action="/cgi-bin/upload.cgi" method="post" enctype="multipart/form-data">
+         
+            
+            <span class="d"><input type="file" name="ovpn" id="file" accept=".ovpn"></input></span>
+
+            <input type="submit" class="d" name="submit" value="Upload" onclick="alert('upload successfully!')"></input>
+        </form>
+
+    <form action="/cgi-bin/select.cgi" method="post" enctype="multipart/form-data">
+ <div id="list">
+                    <select title="Select openvpn configuration" class="text" name="config"></select>
+                  </div>
+
+
+
+
+<input type="submit" value=" SAVE"  value="Submit" class="submitbutton" onclick="alert('Save successfully!')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" formaction="/cgi-bin/delete.cgi" class="submitbutton" onclick="alert('Delete successfully!')">DELETE</button>
+</form>       
+ 
+
+
+<center>	<text id="ovpnbutton"><input type="button" onclick="javascript:connect()" class='btn-pushgreen' value="START"></text><br /><br />
+<text id="autostartbutton"><input type="button" onclick="javascript:autostart()" class='btn-pushgreen' value="AUTOSTART"></text>
+</center>
+   
+</div>
+ <br > 
+ <br > 
+</div>
+<textarea id="logs" style="color:darkgrey;width:500px;height:100px;font-size:8pt; background-color: white;" readonly></textarea>
+</div>
+
+<div id="Paris" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+ <div class="">
+<br />
+<br />
+<br />
+<br />
+<form action="/cgi-bin/account2.cgi" method="post" enctype="multipart/form-data">
+  <font color="grey">Username
+					<br/>
+					<input type="text" id="username" name="name" placeholder="Username00">
+					<br/>
+					Password
+					<br/>
+					<input type="password" id="userpass" name="pass" placeholder="Password00"><br /><input type="checkbox" onclick="userpassword()">Show Password
+					<br/>
+						<br/>
+					<input type="submit" name="submit" value="Save" onclick="alert('Save successfully!')"></font>
+        
+    </form>
+
+</div>
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+   <span class="d"><textarea id="logs" style="color:grey;width:500px;height:200px;font-size:8pt; background-color: white;" readonly></textarea></span>
+
+
+</div>
+
+<div id="Tokyo1" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+   <form action="/cgi-bin/sysupgrade.cgi" onsubmit="return confirm('are you sure?!')" method="post" enctype="multipart/form-data">
+               <font color="red"><mark> <b>for systemupgrade bin here</b></mark></font>
+            <br />
+            <span class="d"><input type="file" name="ovpn" id="file" accept=".bin"></input></span>
+            <input type="submit" class="" name="submit" value="Upload"></input>
+        </form>
+<br />
+
+
+
+<form action="/cgi-bin/offlineserver.cgi" method="post" enctype="multipart/form-data">
+         <font color="red"><mark> <b>for offline server update file must be a server.tar.gz</b></mark></font>
+            <br />
+              
+            <span class="d"><input type="file" name="ovpn" id="file" accept=".gz"></input></span>
+            <input type="submit" class="" name="submit" value="Upload" id="myHref6"></input>
+        </form>
+
+
+<br />
+ 
+
+  <span class="d"><a href="./cgi-bin/links.cgi" id="myHref6"><i class="	fa fa-trash-o" aria-hidden="true"></i>REBOOT</a></span>
+
+ 
+
+</div>
+
+<div id="Tokyo2" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+<font color="grey"><h1><b>THIS IS ONLY FOR 2GHZ FREQUENCY<br /></h1>
+<form action="/cgi-bin/test.sh" method="post" enctype="multipart/form-data">
+  <font color="grey">wifiname
+					<br/>
+					<input type="text" id="name" name="name" placeholder="WIFINAME">
+					<br/>
+					wifiword
+					<br/>
+					<input type="password" id="pass" name="pass" placeholder="WIFIPASS"><br /><input type="checkbox" onclick="wifipassword()">Show Password
+					<br/>
+						<br/>
+					<input type="submit" name="submit" value="Save" onclick="alert('Save successfully!')"></font>
+        
+  
+
+</form>
+</div>
+
+<div id="Tokyo3" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+<br />
+
+
+
+
+
+
+<span class="d"><a href="./cgi-bin/wireguardupdate" id="myHref6"><i class="	fa fa-trash-o" aria-hidden="true"></i>WIREGUARD SETUP</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+<span class="d"><a href="./cgi-bin/openvpnupdate" id="myHref6"><i class="	fa fa-trash-o" aria-hidden="true"></i>OPENVPN SETUP</a></span>
+<br /><br />
+
+
+
+<form action="/cgi-bin/protect.cgi" method="post" enctype="multipart/form-data" onsubmit="return confirm('are you sure?!')">
+<font color="grey"> <b>SUPERADMIN ACCESS<br />
+
+
+USER : root &nbsp;&nbsp;PASSWORD :<input type="text"  placeholder="PASSOWRD" name="username"></input> 
+
+
+</font>
+
+<input type="submit" name="subbtn" class="submitbutton" value="Submit">
+</form>
+<br />
+<br />
+<br />
+GUEST WEB UI ACCESS USER AND PASS
+<form action="/cgi-bin/guest.cgi" method="post" enctype="multipart/form-data" onsubmit="return confirm('are you sure?!')">
+  <font color="grey">Username   and    Password
+					<br/>
+					<input type="text" id="1sername" name="1name" placeholder="Username">
+					
+					
+					
+					<input type="password" id="1userpass" name="1pass" placeholder="Password">
+					<br/>
+					
+					<input type="submit" name="submit" value="Save" class="submitbutton"></font>
+        
+    </form>
+
+  <form action="./cgi-bin/test2.sh" method="get" onsubmit="alert('Save Successfully!')">
+<font color="grey"> <b>TIME AND DATE SETTINGS<br />
+
+
+<h1>ENTER  DATE FORMAT  YYYY-MM-DD  THEN ENTER THEN TIME FORMAT HHMM ENTER </h1><br /><input type="text"  placeholder="date and time"  name="username2"></input> 
+
+
+</font>
+
+
+<input type="submit" name="submitbutton" class="submitbutton"  value="Submit">
+</form>
+</div>
+<br />
+
+</form>
+</div>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+ <br>
+	
+<br>
+
+<br>
+<br>
+
+
+
+
+ 
+<br>
+
+
+<script>
+
+ setInterval(function() {
+                $('#wifi').load('/cgi-bin/wifi');
+            }, 1000);
+
+</script>
+
+
+</div>
+
+</center>
+</body>
+
+
+ <script type="text/javascript">
+            $("#list").load("/cgi-bin/showlist.cgi");
+          </script>
+
+<script>
+setInterval(function () {
+	$("#ovpnbutton").load("/cgi-bin/openvpnbutton.cgi")
+}, 1000);
+
+setInterval(function () {
+	$("#autostartbutton").load("/cgi-bin/autostartbutton.cgi")
+}, 1000);
+</script>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+</html>

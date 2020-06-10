@@ -1,0 +1,48 @@
+#!/bin/sh
+echo "Content-type: text/html"
+echo 
+echo
+echo
+cp -f /rom/etc/config/firewall /etc/config/firewall
+echo "
+config zone
+	option input 'ACCEPT'
+	option output 'ACCEPT'
+	option name 'VPN_FW'
+	option forward 'ACCEPT'
+	option masq '1'
+	option mtu_fix '1'
+	option network 'PROVIDER'
+
+config forwarding
+	option dest 'VPN_FW'
+	option src 'lan'
+" >> /etc/config/firewall
+
+
+ sed -i '/#/,/#/d' /etc/config/network
+
+uci set network.PROVIDER=interface
+uci set network.PROVIDER.proto='none'
+uci set network.PROVIDER.ifname='tun0'
+uci commit network
+
+echo " " > /etc/config/openvpn
+
+echo "
+config openvpn 'PROVIDER'
+	option enable '1'
+	option config '/etc/openvpn/server.ovpn'
+
+" > /etc/config/openvpn
+
+echo "openvpn settings updated -  pls goto settings reboot to apply the changes"
+
+
+cat << EOF
+
+<HTML>
+
+<meta http-equiv="Refresh" content="4; url=/index.html">
+
+</HTML>
